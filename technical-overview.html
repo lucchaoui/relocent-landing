@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Relocent AI - Technical Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      background: #0a0e1a;
+      color: #e5e7eb;
+    }
+    h1 { color: #60a5fa; border-bottom: 2px solid #3b82f6; padding-bottom: 0.5rem; }
+    h2 { color: #10b981; margin-top: 2rem; }
+    h3 { color: #94a3b8; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    th, td { padding: 0.75rem; border: 1px solid #334155; text-align: left; }
+    th { background: #1e293b; color: #60a5fa; }
+    code { background: #1e293b; padding: 0.2rem 0.4rem; border-radius: 4px; color: #10b981; }
+    pre { background: #1e293b; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    .highlight { background: rgba(59, 130, 246, 0.1); padding: 1rem; border-left: 4px solid #3b82f6; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+
+<h1>Relocent AI - Technical Overview</h1>
+<p><strong>Hardware-Agnostic Indoor Asset Tracking</strong></p>
+
+<h2>Executive Summary</h2>
+<p>Relocent AI delivers sub-2 meter indoor positioning for warehouses and supply chains without requiring expensive infrastructure replacement. By fusing signals from existing Wi-Fi access points and BLE beacons with optional 5G positioning, Relocent provides real-time asset visibility that reduces search time by up to 70%.</p>
+
+<h2>The Problem</h2>
+<ul>
+  <li><strong>30% of warehouse shift time</strong> wasted searching for misplaced assets</li>
+  <li><strong>$50,000+ annual cost</strong> per facility in lost productivity</li>
+  <li><strong>40% of cycle counts fail</strong> due to location inaccuracy</li>
+  <li>Existing RTLS solutions require proprietary hardware and costly rollouts</li>
+</ul>
+
+<h2>The Solution</h2>
+<p>Relocent AI is a software-first positioning platform that:</p>
+<ol>
+  <li><strong>Works with existing infrastructure</strong> - No rip-and-replace</li>
+  <li><strong>Delivers 2m accuracy indoors</strong> - Sufficient for pallet/equipment location</li>
+  <li><strong>Provides AI-powered insights</strong> - Anomaly detection and optimization recommendations</li>
+  <li><strong>Scales cost-effectively</strong> - SaaS pricing aligned with value delivered</li>
+</ol>
+
+<h2>Technical Architecture</h2>
+
+<h3>Sensor Fusion Engine</h3>
+<ul>
+  <li><strong>Extended Kalman Filter (EKF)</strong> combines multiple positioning sources</li>
+  <li><strong>Adaptive weighting</strong> based on signal quality and environment</li>
+  <li><strong>Real-time processing</strong> with &lt;1 second latency</li>
+</ul>
+
+<h3>Supported Positioning Sources</h3>
+<ol>
+  <li><strong>Wi-Fi RTT</strong> (IEEE 802.11mc/az) - Room-level accuracy</li>
+  <li><strong>BLE 5.x</strong> (RSSI/AoA) - Proximity and ranging</li>
+  <li><strong>5G NR Rel-18</strong> (when available) - Carrier-phase sub-meter</li>
+  <li><strong>IMU sensors</strong> - Motion tracking for gap-filling</li>
+</ol>
+
+<h2>Current Status (January 2026)</h2>
+
+<div class="highlight">
+<h3>Completed</h3>
+<ul>
+  <li>✅ Core fusion engine with EKF implementation</li>
+  <li>✅ Support for Wi-Fi, BLE, and 5G positioning sources</li>
+  <li>✅ Web-based visualization dashboard</li>
+  <li>✅ RESTful API for integration</li>
+  <li>✅ Synthetic data validation (86,385 position samples, 20 assets, 60-minute simulation)</li>
+</ul>
+</div>
+
+<h3>In Development</h3>
+<ul>
+  <li>🔄 Real hardware integration (BLE beacons, Wi-Fi scanning)</li>
+  <li>🔄 Claude AI integration for natural language insights</li>
+  <li>🔄 Anomaly detection and alerting</li>
+</ul>
+
+<h2>Competitive Positioning</h2>
+<table>
+  <tr>
+    <th>Feature</th>
+    <th>Relocent AI</th>
+    <th>Traditional RTLS</th>
+    <th>GPS/GNSS</th>
+  </tr>
+  <tr>
+    <td>Indoor accuracy</td>
+    <td>&lt;2m</td>
+    <td>1-5m</td>
+    <td>None indoors</td>
+  </tr>
+  <tr>
+    <td>Infrastructure cost</td>
+    <td>Low (use existing)</td>
+    <td>High (proprietary)</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Deployment time</td>
+    <td>Days</td>
+    <td>Weeks-Months</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <td>Hardware agnostic</td>
+    <td>✅ Yes</td>
+    <td>❌ No</td>
+    <td>❌ No</td>
+  </tr>
+  <tr>
+    <td>AI insights</td>
+    <td>✅ Yes</td>
+    <td>❌ Limited</td>
+    <td>❌ No</td>
+  </tr>
+</table>
+
+<h2>Pricing Model</h2>
+<table>
+  <tr>
+    <th>Tier</th>
+    <th>Size</th>
+    <th>Price/Month</th>
+    <th>Assets Included</th>
+  </tr>
+  <tr>
+    <td>Small</td>
+    <td>1-5K sq ft</td>
+    <td>$99</td>
+    <td>Up to 100</td>
+  </tr>
+  <tr>
+    <td>Medium</td>
+    <td>5-50K sq ft</td>
+    <td>$299</td>
+    <td>Up to 500</td>
+  </tr>
+  <tr>
+    <td>Large</td>
+    <td>50K+ sq ft</td>
+    <td>$799</td>
+    <td>Up to 2,000</td>
+  </tr>
+  <tr>
+    <td>Enterprise</td>
+    <td>Multi-site</td>
+    <td>Custom</td>
+    <td>Unlimited</td>
+  </tr>
+</table>
+
+<h2>Target Customers</h2>
+<h3>Primary</h3>
+<ul>
+  <li>3PL logistics providers (DHL, FedEx, UPS)</li>
+  <li>Warehouse operators (Prologis, Duke Realty)</li>
+  <li>Retail distribution centers (Walmart, Target, Amazon)</li>
+</ul>
+
+<h2>Contact</h2>
+<p><strong>Early Access Program:</strong> luc.chaoui@gmail.com<br>
+<strong>Website:</strong> https://www.getrelocent.com\<br\>
+<strong>Status:</strong> Accepting pilot partners for Q1 2026</p>
+
+<hr>
+<p style="text-align: center; color: #64748b; margin-top: 3rem;">
+  <em>Relocent AI - Hardware-agnostic indoor positioning for the future of logistics</em>
+</p>
+
+</body>
+</html>
